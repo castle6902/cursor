@@ -18,8 +18,8 @@ from logger import log
 
 
 def file_data_filter(df):
-    # 格式化时间
-    df["Hematology"] = pd.to_datetime(df["Hematology"]).dt.strftime('%Y/%m/%d')  # 正确写法
+    # 日期统一改为 2025/01/07
+    df["Hematology"] = "2025/01/07"
     # 删除空的行
     df = df[df["Sample name"] != '']
     return df

@@ -17,12 +17,8 @@ def data_filter(df):
     # df['date_formatted'] = df['date'].dt.strftime('%Y/%m/%d')
 
     # df["Hematology"] = pd.to_datetime(df["Hematology"])  # 正确写法
-    # 直接用 .loc 定位列，先转为 datetime 再格式化，避免警告
-    df.loc[:, "Blood Coagulation"] = pd.to_datetime(
-        df["Blood Coagulation"],
-        format="%Y.%m.%d",  # 匹配原始格式：年.月.日（支持单数月/日，如1.4）
-        errors="coerce"  # 无法解析的日期会转为 NaT
-    ).dt.strftime("%Y/%m/%d")  # 转为 年/月/日 格式（单数会保留，如1/4）
+    # 日期统一改为 2025/01/07
+    df.loc[:, "Blood Coagulation"] = "2025/01/07"
     return df
 
 

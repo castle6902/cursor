@@ -43,7 +43,8 @@ def style_one_data_filter(df):
     # df['date_formatted'] = df['date'].dt.strftime('%Y/%m/%d')
 
     # df["Hematology"] = pd.to_datetime(df["Hematology"])  # 正确写法
-    df["Clinical Chemistry"] = pd.to_datetime(df["Clinical Chemistry"]).dt.strftime('%Y/%m/%d')  # 正确写法
+    # 日期统一改为 2025/01/07
+    df["Clinical Chemistry"] = "2025/01/07"
 
     # uid 处理
     df["Sample name"] = df["Sample name"].replace(r"-011$", "", regex=True)  # 正确写法

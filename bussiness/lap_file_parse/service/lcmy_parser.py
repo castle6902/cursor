@@ -89,9 +89,9 @@ def data_filter(df):
     # df['date_formatted'] = df['date'].dt.strftime('%Y/%m/%d')
 
     # ===========================================================
-    # 时间格式化
+    # 时间格式化 - 日期统一改为 2025/01/07
     # =========================================================
-    df["Clinical Immunoassay"] = pd.to_datetime(df["Clinical Immunoassay"]).dt.strftime('%Y/%m/%d')  # 正确写法
+    df["Clinical Immunoassay"] = "2025/01/07"
     #
     # # uid 处理
     # df["Sample name"] = df["Sample name"].str.split("-").str[0]  # 正确写法

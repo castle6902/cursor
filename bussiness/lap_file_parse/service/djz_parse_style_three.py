@@ -27,7 +27,8 @@ def replace_pattern(s):
 
 
 def style_three_data_filter(df):
-    df["Clinical Chemistry"] = pd.to_datetime(df["Clinical Chemistry"]).dt.strftime('%Y/%m/%d')  # 正确写法
+    # 日期统一改为 2025/01/07
+    df["Clinical Chemistry"] = "2025/01/07"
     df['Sample name'] = df['Sample name'].apply(replace_pattern)
     return df
 

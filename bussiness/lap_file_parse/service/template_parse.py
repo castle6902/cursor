@@ -36,14 +36,22 @@ def template_file_of_xlsx_parse(file_info: FileInfo, sheet_name_list: list[LapFi
             second_row = pf_map[sheet_name].iloc[1].values.tolist()
             second_row.append("ERROR")
             # 删除空白
-            res[sheet_type] = [s.strip() for s in second_row]
+            cleaned_row = [s.strip() for s in second_row]
+            
+            # ====================================================
+            # 处理化学电解质 sheet 中的 CO2 这个化合物
+            # 将 CO₂ 或 CO2（带下标）统一改为 CO2
+            # ====================================================
+            if sheet_type == LapFileType.SHDJZ:
+                # 使用正则表达式匹配 CO2 的各种变体（包括下标）
+                import re
+                # 匹配 CO 后面跟数字（可能是下标）的模式，统一替换为 CO2
+                cleaned_row = [re.sub(r'CO[₂2]?', 'CO2', header, flags=re.IGNORECASE) for header in cleaned_row]
+            
+            res[sheet_type] = cleaned_row
 
     # 根据需求，若需返回所有 sheet 的第二行合并列表，可使用：
     # return [row for rows in res.values() for row in rows]
     # 若需返回按 sheet 名称映射的字典，直接返回 res（需修改函数返回类型注解为 dict）
-
-    # ====================================================
-    # 处理化学电解质 sheet 中的 CO2 这个化合物
-    # ====================================================
 
     return res

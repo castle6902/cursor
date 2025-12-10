@@ -16,7 +16,8 @@ def data_filter(df):
     # df['date_formatted'] = df['date'].dt.strftime('%Y/%m/%d')
 
     # df["Hematology"] = pd.to_datetime(df["Hematology"])  # 正确写法
-    df["Urinalysis"] = pd.to_datetime(df["Urinalysis"]).dt.strftime('%Y/%m/%d')  # 正确写法
+    # 日期统一改为 2025/01/07
+    df["Urinalysis"] = "2025/01/07"
     test_rows = df[df["Sample name"].str.startswith("UC-CONTROL", na=False)].index
 
     # 删除这些行（inplace=True 表示在原 DataFrame 上修改）

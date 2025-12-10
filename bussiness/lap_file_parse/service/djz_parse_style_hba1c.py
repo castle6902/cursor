@@ -7,9 +7,8 @@ from common.utils.file_utils import detect_file_encoding
 
 
 def data_filter(df):
-    # 结果：字符串类型，格式为 '2025/08/21'
-    df["Clinical Chemistry"] = pd.to_datetime(df["Clinical Chemistry"], format="%Y.%m.%d %H:%M",
-                                              errors="coerce").dt.strftime('%Y/%m/%d')
+    # 日期统一改为 2025/01/07
+    df["Clinical Chemistry"] = "2025/01/07"
     # 你的原代码就是正确的
     df['HbA1c'] = df['HbA1c'].str.replace('%', '')
     return df
